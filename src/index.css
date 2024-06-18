@@ -1,12 +1,16 @@
 @import url(assets/fonts/font.style.css);
 
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 /* CSS Reset! Don't think about changing it before thinking about it! */
 
 /*
   Use a default background color for the page
 */
 html {
-  background-color: #e8e9ed;
+  background-color: #000000;
 }
 /*
   Use a more-intuitive box-sizing model
