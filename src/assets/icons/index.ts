@@ -3,4 +3,7 @@ export { default as Sort } from './sort.svg';
 export { default as Home } from './home.svg';
 export { default as Asterisk } from './asterisk.svg';
 export { default as Sparkle } from './sparkle.svg';
+export { default as Sparkles } from './sparkles.svg';
 export { default as Dot } from './dot.svg';
+export { default as OutlinedCircle } from './outlined-circle.svg';
+export { default as WorldGrid } from './world-grid.svg';
