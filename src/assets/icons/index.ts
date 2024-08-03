@@ -7,6 +7,8 @@ export { default as Sparkles } from './sparkles.svg';
 export { default as Dot } from './dot.svg';
 export { default as OutlinedCircle } from './outlined-circle.svg';
 export { default as WorldGrid } from './world-grid.svg';
+export { default as ArrowLeft } from './keyboard-arrow-left.svg';
+export { default as ArrowRight } from './keyboard-arrow-right.svg';
 
 // Logos;
 export { default as Eslint } from './logos/eslint.svg';

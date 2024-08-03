@@ -5,7 +5,7 @@ import { PropsWithChildren } from 'react';
 
 const HomePage = () => {
 	return (
-		<Section id='1'>
+		<Section id='1' className='overflow-hidden'>
 			<header className='w-full h-[52px] mt-10 grid grid-cols-3 justify-items-center'>
 				<div className='flex justify-center items-center gap-4'>
 					<img src={GithubSquares} alt='logo' width={44} height={44} />

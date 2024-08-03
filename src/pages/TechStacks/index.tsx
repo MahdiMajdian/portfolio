@@ -1,12 +1,6 @@
 import { Section } from '@/App';
 import {
-	Asterisk,
-	Home,
-	Sparkle,
-	Dot,
 	Sparkles,
-	OutlinedCircle,
-	WorldGrid,
 	Vite,
 	Redux,
 	Typescript,
@@ -24,37 +18,72 @@ import {
 	GraphQL,
 	Git,
 	Eslint,
+	ArrowRight,
+	ArrowLeft,
 } from '@assets/icons';
-import { motion } from 'framer-motion';
-import { useState } from 'react';
+import { motion, Variants } from 'framer-motion';
+import { FunctionComponent, useState } from 'react';
 
-function IconItem({
-	icon,
-	offsetDegree,
-	index,
-}: {
+function toRadians(angle: number) {
+	return angle * (Math.PI / 180);
+}
+
+type IconItemProps = {
+	icon: React.ReactNode;
 	offsetDegree: number;
 	index: number;
-	icon: React.ReactNode;
-}) {
+};
+
+function IconItem({ icon, offsetDegree, index }: IconItemProps) {
+	const variants: Variants = {
+		rotate: ({
+			isSpotlight,
+			angel,
+		}: {
+			isSpotlight: boolean;
+			angel: number;
+		}) => ({
+			scale: isSpotlight ? 3.5 : 1,
+			x: Math.cos(toRadians(angel)) * 500,
+			y: Math.sin(toRadians(angel)) * -500,
+			transition: {
+				duration: 0.15,
+				type: 'spring',
+				stiffness: 100,
+				damping: 10,
+			},
+		}),
+		top: {
+			scale: 3,
+			transition: {
+				duration: 0.25,
+				delay: 0.15,
+				bounce: 'spring',
+				stiffness: 100,
+			},
+		},
+	};
+	const animationObject = index === 4 ? ['rotate', 'top'] : ['rotate'];
 	return (
 		<motion.div
-			layout
-			style={{
-				transform: `rotate(${
-					index * offsetDegree
-				}deg) translate(calc(-512px + 50%))`,
+			custom={{
+				isSpotlight: index === 4,
+				angel: index * offsetDegree + (90 % offsetDegree),
 			}}
-			className='absolute bottom-0 left-1/2 w-12 h-12 origin-[0%_50%]'
+			initial={false}
+			animate={animationObject}
+			variants={variants}
+			className={`absolute -bottom-40 left-1/2`}
 		>
-			<div style={{ transform: `rotate(${-1 * index * offsetDegree}deg)` }}>
-				{icon}
-			</div>
+			<div>{icon}</div>
 		</motion.div>
 	);
 }
 
-const items = [
+const items: {
+	icon: FunctionComponent<React.SVGProps<SVGSVGElement>>;
+	name: string;
+}[] = [
 	{ icon: Git, name: 'Git' },
 	{ icon: GraphQL, name: 'GraphQL' },
 	{ icon: Jest, name: 'Jest' },
@@ -69,18 +98,28 @@ const items = [
 	{ icon: Tailwind, name: 'Tailwind' },
 	{ icon: Typescript, name: 'Typescript' },
 	{ icon: Redux, name: 'Redux' },
+	{ icon: ReactQuery, name: 'ReactQuery' },
 	{ icon: Vite, name: 'Vite' },
-	{ icon: WorldGrid, name: 'WorldGrid' },
-	{ icon: OutlinedCircle, name: 'OutlinedCircle' },
-	{ icon: Sparkle, name: 'Sparkle' },
-	{ icon: Dot, name: 'Dot' },
-	{ icon: Asterisk, name: 'Asterisk' },
-	{ icon: Home, name: 'Home' },
 	{ icon: Eslint, name: 'Eslint' },
 	{ icon: Javascript, name: 'Javascript' },
 ];
 const TechStacks = () => {
 	const [a, setA] = useState(0);
+	const handleRotateRight = () => {
+		setA((prev) => {
+			const newValue = prev - 1;
+			if (newValue === -18 || newValue === 18) return 0;
+			return newValue;
+		});
+	};
+
+	const handleRotateLeft = () => {
+		setA((prev) => {
+			const newValue = prev + 1;
+			if (newValue === -18 || newValue === 18) return 0;
+			return newValue;
+		});
+	};
 	return (
 		<Section id='2' className='relative overflow-hidden'>
 			<h2 className='flex gap-7 mt-10 ms-36 text-3xl text-white'>
@@ -89,40 +128,24 @@ const TechStacks = () => {
 			</h2>
 
 			<div className='mt-16 ps-10'>
-				{/* <input
-					type='range'
-					min={0}
-					max={100}
-					value={angel}
-					onChange={(e) => setAngel(e.target.valueAsNumber)}
-				/> */}
-
-				{/* <motion.div
-					style={{
-						transform: `rotate(${
-							angel * 1.8
-						}deg) translate(calc(-112px + 50%))`,
-					}}
-					className='absolute bottom-0 left-1/2 w-12 h-12 origin-[0%_50%]'
-				>
-					<Eslint />
-					<IconItem icon={Eslint} />
-				</motion.div> */}
-				<p className='text-white' onClick={() => setA((prev) => prev + 1)}>
-					Click on the icons to see the animation
-				</p>
+				<div onClick={handleRotateRight}>
+					<ArrowRight className='absolute top-1/2 -translate-y-1/2 right-8 fill-white w-20 h-20 ' />
+				</div>
+				<div onClick={handleRotateLeft}>
+					<ArrowLeft className='absolute top-1/2 -translate-y-1/2 left-8 fill-white w-20 h-20 ' />
+				</div>
 				{a}
 				{items.map((item, index) => (
-					<IconItem
-						key={item.name}
-						icon={<item.icon />}
-						index={index + a}
-						offsetDegree={15}
-					/>
+					<>
+						<IconItem
+							key={item.name}
+							icon={<item.icon width={56} height={56} />}
+							index={(index + a) % items.length}
+							offsetDegree={360 / items.length}
+						/>
+					</>
 				))}
-				{/* <div className='absolute bottom-0 left-1/2 -translate-x-1/2 w-12 h-12'>
-					<Mobx />
-				</div> */}
+				{/* <div className='absolute bottom-0 inset-x-0 w-full h-44 bg-gradient-to-t from-purple-300 from-55% to-transparent'></div> */}
 			</div>
 		</Section>
 	);
