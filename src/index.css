@@ -24,7 +24,7 @@
   }
 }
 .animate-track {
-  animation: track 20s linear infinite alternate;
+  animation: track 5s linear infinite alternate;
 
 
 }
@@ -73,7 +73,6 @@ body {
 */
 img, picture, video, canvas, svg {
   display: block;
-  max-width: 100%;
 }
 /*
   Remove built-in form typography styles
