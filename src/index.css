@@ -25,8 +25,6 @@
 }
 .animate-track {
   animation: track 5s linear infinite alternate;
-
-
 }
 
 /* CSS Reset! Don't think about changing it before thinking about it! */
