@@ -1,4 +1,5 @@
 import { Section } from '@/App';
+import { toRadians } from '@utilities';
 import {
 	Sparkles,
 	Vite,
@@ -23,10 +24,6 @@ import {
 } from '@assets/icons';
 import { motion, Variants } from 'framer-motion';
 import { FunctionComponent, useState } from 'react';
-
-function toRadians(angle: number) {
-	return angle * (Math.PI / 180);
-}
 
 type IconItemProps = {
 	icon: React.ReactNode;
@@ -135,6 +132,7 @@ const TechStacks = () => {
 					<ArrowLeft className='absolute top-1/2 -translate-y-1/2 left-8 fill-white w-20 h-20 ' />
 				</div>
 				{a}
+
 				{items.map((item, index) => (
 					<>
 						<IconItem
