@@ -33,14 +33,53 @@ const HomePage = () => {
 						<Sparkle className='absolute bottom-0 left-0 -translate-x-1/2 translate-y-1/2 z-50' />
 					</GridBlocks>
 					<GridBlocks />
-					<GridBlocks className='col-span-4 row-span-3 overflow-hidden text-white -z-10 h-full flex flex-col items-center justify-center'>
+					{/* hidden overflow -> */}
+					<GridBlocks className='col-span-4 row-span-3 text-white -z-10 max-h-[258px] flex flex-col items-center justify-center'>
 						<h2 className='text-4xl'>FrontEnd Developer</h2>
 						<div className='self-start animate-track'>
-							<p className='self-start rotate-12 flex justify-center items-center gap-3 mt-3 text-9xl font-extrabold text-white/20 text-nowrap -z-10'>
-								5+ years of experience
-								<Dot className='fill-white w-3 h-3' />
-								Super okay!
-							</p>
+							<div className='self-start rotate-6 flex justify-center flex-col gap-2 items-center mt-3 text-7xl font-extrabold text-white/20 text-nowrap -z-10'>
+								<div className=''>
+									<span>Pixel Perfect</span>
+									<Dot className='inline fill-white/20 w-6 h-6' />
+									<span>Event Loop</span>
+									<Dot className='inline fill-white/20 w-6 h-6' />
+									<span>Tree Shaking</span>
+								</div>
+
+								<div className=''>
+									<span>SSR</span>
+									<Dot className='inline fill-white/20 w-6 h-6' />
+									<span>Mobile-First Design</span>
+									<Dot className='inline fill-white/20 w-6 h-6' />
+									<span>Lazy Loading</span>
+								</div>
+
+								<div className=''>
+									<span>i18n</span>
+									<Dot className='inline fill-white/20 w-6 h-6' />
+									<span>Code Splitting</span>
+									<Dot className='inline fill-white/20 w-6 h-6' />
+									<span>Accessibility</span>
+								</div>
+
+								<div className=''>
+									<span>Performance</span>
+									<Dot className='inline fill-white/20 w-6 h-6' />
+									<span>Core Web Vitals</span>
+									<Dot className='inline fill-white/20 w-6 h-6' />
+									<span>Restful APIs</span>
+								</div>
+
+								<div className=''>
+									<span>GraphQL</span>
+									<Dot className='inline fill-white/20 w-6 h-6' />
+									<span>Authentication</span>
+									<Dot className='inline fill-white/20 w-6 h-6' />
+									<span>PWA</span>
+									<Dot className='inline fill-white/20 w-6 h-6' />
+									<span>Maintainability</span>
+								</div>
+							</div>
 						</div>
 					</GridBlocks>
 					<GridBlocks />
