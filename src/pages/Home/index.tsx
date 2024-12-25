@@ -37,6 +37,7 @@ const HomePage = () => {
 					<GridBlocks className='col-span-4 row-span-3 text-white -z-10 max-h-[258px] flex flex-col items-center justify-center'>
 						<h2 className='text-4xl'>FrontEnd Developer</h2>
 						<div className='self-start animate-track'>
+							{/* hidden overflow -> */}
 							<div className='self-start rotate-6 flex justify-center flex-col gap-2 items-center mt-3 text-7xl font-extrabold text-white/20 text-nowrap -z-10'>
 								<div className=''>
 									<span>Pixel Perfect</span>
